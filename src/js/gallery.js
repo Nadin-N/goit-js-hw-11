@@ -3,7 +3,7 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 import Notiflix from 'notiflix';
 import debounce from 'lodash.debounce';
 import { PixabayAPI } from './pixabay-api';
-import { renderMarkup } from './renderMarkUp';
+import { renderMarkup } from './renderMarkup';
 
 const refs = {
   searchFormEl: document.querySelector('#search-form'),
