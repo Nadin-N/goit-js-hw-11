@@ -1,6 +1,3 @@
-import SimpleLightbox from 'simplelightbox';
-import 'simplelightbox/dist/simple-lightbox.min.css';
-
 function renderMarkup(photosArr) {
   const markup = photosArr.map(photo => {
     const {
@@ -38,7 +35,5 @@ function renderMarkup(photosArr) {
   });
   return markup.join('');
 }
-
-// const lightbox = new SimpleLightbox('.gallery a');
 
 export { renderMarkup };

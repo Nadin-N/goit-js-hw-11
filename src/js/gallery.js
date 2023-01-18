@@ -21,15 +21,11 @@ refs.searchInputEl.addEventListener(
     if (refs.searchInputEl.value === '') {
       refs.galleryItem.innerHTML = '';
       addHiddenClass();
-      // if (!refs.loadBtnEl.classList.contains('is-hidden')) {
-      //   refs.loadBtnEl.classList.add('is-hidden');
-      // }
     }
   }, 800)
 );
 
 const photoAPI = new PixabayAPI();
-// console.log(photoAPI);
 
 refs.searchFormEl.addEventListener('submit', onSearchFormSubmit);
 
@@ -37,9 +33,6 @@ async function onSearchFormSubmit(e) {
   e.preventDefault();
 
   addHiddenClass();
-  //   if (!refs.loadBtnEl.classList.contains('is-hidden')) {
-  //     refs.loadBtnEl.classList.add('is-hidden');
-  //   }
 
   refs.searchBtnEl.disabled = true;
   refs.searchBtnEl.classList.add('disabled');
@@ -52,9 +45,6 @@ async function onSearchFormSubmit(e) {
       data: { hits: photosArr, totalHits },
     } = await photoAPI.getPhotosByQuery();
 
-    //  console.log(total);
-    //  console.log(totalHits);
-
     if (photosArr.length === 0) {
       Notiflix.Notify.failure(
         'Sorry, there are no images matching your search query. Please try again.'
@@ -64,15 +54,9 @@ async function onSearchFormSubmit(e) {
       refs.searchBtnEl.disabled = false;
       refs.searchBtnEl.classList.remove('disabled');
       addHiddenClass();
-      // if (!refs.loadBtnEl.classList.contains('is-hidden')) {
-      //   refs.loadBtnEl.classList.add('is-hidden');
-      // }
 
       return;
     }
-
-    //  console.log(totalHits);
-    //  console.log(photoAPI.per_page);
 
     if (totalHits > photoAPI.per_page) {
       refs.loadBtnEl.classList.remove('is-hidden');
@@ -85,25 +69,9 @@ async function onSearchFormSubmit(e) {
 
     refs.searchBtnEl.disabled = false;
     refs.searchBtnEl.classList.remove('disabled');
-
-    //  console.log(total, photoAPI.per_page);
   } catch {
     err => console.log(err);
   }
-
-  //   const lightbox = new SimpleLightbox('.gallery a', {
-  //     captionsData: 'alt',
-  //     captionPosition: 'bottom',
-  //     captionDelay: 250,
-  //   });
-
-  //   photoAPI.getPhotosByQuery().then(photos => {
-  //     const photosArr = photos.data.hits;
-
-  //   refs.galleryItem.insertAdjacentHTML('beforeend', renderMarkup(photosArr));
-  //   });
-
-  //   e.target.reset();
 }
 refs.loadBtnEl.addEventListener('click', onLoadBtn);
 

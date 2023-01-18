@@ -22,13 +22,9 @@ export class PixabayAPI {
         per_page: 40,
       },
     };
-    //  console.log(axios.get(`${PixabayAPI.BASE_URL}`, searchParams));
 
     const response = await axios.get(`${PixabayAPI.BASE_URL}`, searchParams);
-    //  console.log(response);
-    // if (!res.ok) throw new Error('Error');
-    return response;
 
-    //  return axios.get(`${PixabayAPI.BASE_URL}`, searchParams);
+    return response;
   }
 }
