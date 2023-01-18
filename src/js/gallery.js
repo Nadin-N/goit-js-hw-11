@@ -63,6 +63,15 @@ async function onSearchFormSubmit(e) {
     }
     refs.galleryItem.innerHTML = renderMarkup(photosArr);
 
+    const { height: cardHeight } = document
+      .querySelector('.gallery')
+      .firstElementChild.getBoundingClientRect();
+
+    window.scrollBy({
+      top: cardHeight * 1,
+      behavior: 'smooth',
+    });
+
     gallery = new SimpleLightbox('.gallery a');
 
     Notiflix.Notify.info(`Hooray! We found ${totalHits} images.`);
@@ -87,6 +96,15 @@ async function onLoadBtn(e) {
     } = await photoAPI.getPhotosByQuery();
 
     refs.galleryItem.insertAdjacentHTML('beforeend', renderMarkup(photosArr));
+
+    const { height: cardHeight } = document
+      .querySelector('.gallery')
+      .firstElementChild.getBoundingClientRect();
+
+    window.scrollBy({
+      top: cardHeight * 10,
+      behavior: 'smooth',
+    });
 
     gallery.refresh('.gallery a');
 
